@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flbmvp/flbmvp.dart';
+import 'package:flutter/material.dart';
 import '../detail_page.dart';
-import 'login_contract.dart';
 import 'login_bean.dart';
+import 'login_contract.dart';
 import 'login_presenter.dart';
-
 
 class LoginPage extends StatefulWidget {
   @override
@@ -22,24 +21,24 @@ class _LoginPageState extends BaseState<ILoginPresenter, LoginPage> implements I
       _code = data.age;
       _message = data.name;
     });
-    Future.delayed(Duration(seconds: 1)).then((value) {
-      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+    Future<DetailPage>.delayed(const Duration(seconds: 1)).then((value) {
+      Navigator.of(context).push(MaterialPageRoute<DetailPage>(builder: (BuildContext context) {
         return DetailPage();
       }));
     });
   }
 
   @override
-  void loginFail(int code, String msg) {
+  void loginFail(dynamic e) {
     print('loginFail');
     setState(() {
-      _code = code;
-      _message = msg;
+      _code = -1;
+      _message = e.toString();
     });
   }
 
   void loginAction() {
-    presenter.login('15930453330', '9999');
+    presenter.login('15201457635', '9999');
   }
 
   @override

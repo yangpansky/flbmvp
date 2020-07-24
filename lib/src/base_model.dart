@@ -1,5 +1,4 @@
-
-import 'ib_model.dart';
+import 'package:flbmvp/src/ib_model.dart';
 
 abstract class BaseModel implements IBModel {
   BaseModel() {

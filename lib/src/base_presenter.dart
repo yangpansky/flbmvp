@@ -1,16 +1,16 @@
 
-import 'ib_model.dart';
-import 'ib_view.dart';
-import 'ib_presenter.dart';
+import 'package:flbmvp/src/ib_model.dart';
+import 'package:flbmvp/src/ib_presenter.dart';
+import 'package:flbmvp/src/ib_view.dart';
 
-abstract class BasePresenter<V extends IBView, M extends IBModel> implements IBPresenter {
+abstract class BasePresenter<V extends IBView, M extends IBModel> implements IBPresenter<V> {
   M _model;
   V _view;
 
   @override
   void attachView(IBView view) {
-    this._model = createModel();
-    this._view = view;
+    _model = createModel() as M;
+    _view = view as V;
   }
 
   @override

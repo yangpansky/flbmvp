@@ -1,8 +1,8 @@
+import 'package:flbmvp/src/ib_presenter.dart';
+import 'package:flbmvp/src/ib_view.dart';
 import 'package:flutter/material.dart';
-import 'ib_presenter.dart';
-import 'ib_view.dart';
 
-abstract class BaseState<P extends IBPresenter, V extends StatefulWidget> extends State<V> implements IBView {
+abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget> extends State<V> implements IBView {
   P _presenter;
 
   @override

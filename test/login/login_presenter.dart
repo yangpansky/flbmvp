@@ -1,6 +1,7 @@
 import 'package:flbmvp/flbmvp.dart';
-import 'login_contract.dart';
+
 import 'login_bean.dart';
+import 'login_contract.dart';
 import 'login_model.dart';
 
 class LoginPresenter extends BasePresenter<ILoginView, ILoginModel> implements ILoginPresenter {
@@ -12,18 +13,14 @@ class LoginPresenter extends BasePresenter<ILoginView, ILoginModel> implements I
   @override
   void login(String phoneNo, String password) {
     view?.showLoading();
-
-    model?.login(phoneNo, password, (LoginBean data) {
-
+    model.login<LoginBean>(phoneNo, password).then((LoginBean data) {
       print('from model success');
       view?.hideLoading();
       view?.loginSuccess(data);
-
-    }, (int code, String msg) {
-
+    }).catchError((dynamic error) {
       print('from model fail');
       view?.hideLoading();
-      view?.loginFail(code, msg);
+      view?.loginFail(error);
     });
   }
 }
