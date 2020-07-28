@@ -5,6 +5,7 @@ import 'login_contract.dart';
 class LoginModel extends BaseModel implements ILoginModel {
   @override
   void dispose() {
+    print('dispose $tag');
   }
 
   @override
@@ -14,5 +15,10 @@ class LoginModel extends BaseModel implements ILoginModel {
       throw Exception('错误啦!!!');
     });
     return response;
+  }
+
+  @override
+  Object createTag() {
+    return 'xxx';
   }
 }

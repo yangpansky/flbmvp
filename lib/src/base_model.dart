@@ -1,10 +1,10 @@
 import 'package:flbmvp/src/ib_model.dart';
 
 abstract class BaseModel implements IBModel {
-  BaseModel() {
-    _tag = '${DateTime.now().millisecondsSinceEpoch}';
+  BaseModel(){
+    _tag = createTag();
   }
-
-  String _tag;
-  String get tag => _tag;
+  Object _tag;
+  Object get tag => _tag;
+  Object createTag();
 }
