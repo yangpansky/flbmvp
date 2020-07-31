@@ -9,19 +9,16 @@ abstract class BasePresenter<V extends IBView, M extends IBModel> implements IBP
 
   @override
   void attachView(IBView view) {
+    assert(view != null);
     _model = createModel() as M;
     _view = view as V;
   }
 
   @override
   void detachView() {
-    if(_view != null) {
-      _view = null;
-    }
-    if(_model != null) {
-      _model.dispose();
-      _model = null;
-    }
+    _view = null;
+    _model?.dispose();
+    _model = null;
   }
 
   V get view => _view;

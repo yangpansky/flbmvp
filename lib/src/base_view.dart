@@ -9,18 +9,14 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
   void initState() {
     super.initState();
     _presenter = createPresenter();
-    if(_presenter != null) {
-      _presenter.attachView(this);
-    }
+    _presenter?.attachView(this);
   }
 
   @override
   void dispose() {
     super.dispose();
-    if(_presenter != null) {
-      _presenter.detachView();
-      _presenter = null;
-    }
+    _presenter?.detachView();
+    _presenter = null;
   }
 
   P createPresenter();
