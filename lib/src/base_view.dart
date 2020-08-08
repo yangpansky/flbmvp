@@ -12,10 +12,6 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
     _presenter?.attachView(this);
   }
 
-  void outSetState(VoidCallback fn) {
-    setState(fn);
-  }
-
   @override
   void dispose() {
     super.dispose();
