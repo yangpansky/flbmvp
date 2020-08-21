@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget> extends State<V> implements IBView {
   P _presenter;
-  bool _isShowLoading;
+  bool _isShowLoading = false;
 
   @override
   bool get isLoading => _isShowLoading;
