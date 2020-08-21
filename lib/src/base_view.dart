@@ -4,6 +4,24 @@ import 'package:flutter/material.dart';
 
 abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget> extends State<V> implements IBView {
   P _presenter;
+  bool _isShowLoading;
+
+  @override
+  bool get isLoading => _isShowLoading;
+
+  @override
+  @mustCallSuper
+  void showLoading() {
+    print('BaseState showLoading, yuan _isShowLoading: $_isShowLoading');
+    _isShowLoading = true;
+  }
+
+  @override
+  @mustCallSuper
+  void hideLoading() {
+    print('BaseState hideLoading, yuan _isShowLoading: $_isShowLoading');
+    _isShowLoading = false;
+  }
 
   @override
   void initState() {
@@ -15,6 +33,7 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
   @override
   void dispose() {
     super.dispose();
+    hideLoading();
     _presenter?.detachView();
     _presenter = null;
   }

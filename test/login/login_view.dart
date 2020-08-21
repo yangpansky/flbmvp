@@ -60,11 +60,13 @@ class _LoginPageState extends BaseState<ILoginPresenter, LoginPage> implements I
 
   @override
   void hideLoading() {
+    super.hideLoading();
     print('hideLoading');
   }
 
   @override
   void showLoading() {
+    super.showLoading();
     print('showLoading');
   }
 

@@ -12,14 +12,20 @@ class LoginPresenter extends BasePresenter<ILoginView, ILoginModel> implements I
 
   @override
   void login(String phoneNo, String password) {
-    view?.showLoading();
+    if(!view.isLoading) {
+      view?.showLoading();
+    }
     model.login<LoginBean>(phoneNo, password).then((LoginBean data) {
       print('from model success');
-      view?.hideLoading();
+      if(view.isLoading) {
+        view?.hideLoading();
+      }
       view?.loginSuccess(data);
     }).catchError((dynamic error) {
       print('from model fail');
-      view?.hideLoading();
+      if(view.isLoading) {
+        view?.hideLoading();
+      }
       view?.loginFail(error);
     });
   }
