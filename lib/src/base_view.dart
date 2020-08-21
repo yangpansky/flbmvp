@@ -7,19 +7,14 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
   bool _isShowLoading = false;
 
   @override
-  bool get isLoading => _isShowLoading;
-
-  @override
   @mustCallSuper
   void showLoading() {
-    print('BaseState showLoading, yuan _isShowLoading: $_isShowLoading');
     _isShowLoading = true;
   }
 
   @override
   @mustCallSuper
   void hideLoading() {
-    print('BaseState hideLoading, yuan _isShowLoading: $_isShowLoading');
     _isShowLoading = false;
   }
 
@@ -40,4 +35,7 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
 
   P createPresenter();
   P get presenter => _presenter;
+
+  @override
+  bool get isLoading => _isShowLoading;
 }
