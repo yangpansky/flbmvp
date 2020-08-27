@@ -28,7 +28,9 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
   @override
   void dispose() {
     super.dispose();
-    hideLoading();
+    if(_isShowLoading) {
+      hideLoading();
+    }
     _presenter?.detachView();
     _presenter = null;
   }
