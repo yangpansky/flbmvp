@@ -2,12 +2,14 @@
 import 'package:flbmvp/src/ib_model.dart';
 import 'package:flbmvp/src/ib_presenter.dart';
 import 'package:flbmvp/src/ib_view.dart';
+import 'package:flutter/foundation.dart';
 
 abstract class BasePresenter<V extends IBView, M extends IBModel> implements IBPresenter<V> {
   M _model;
   V _view;
 
   @override
+  @mustCallSuper
   void attachView(IBView iView) {
     assert(iView != null);
     _model = createModel() as M;
@@ -15,6 +17,7 @@ abstract class BasePresenter<V extends IBView, M extends IBModel> implements IBP
   }
 
   @override
+  @mustCallSuper
   void detachView() {
     _view = null;
     _model?.dispose();

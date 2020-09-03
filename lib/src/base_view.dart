@@ -19,6 +19,7 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
   }
 
   @override
+  @mustCallSuper
   void initState() {
     super.initState();
     _presenter = createPresenter();
@@ -26,6 +27,7 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
   }
 
   @override
+  @mustCallSuper
   void dispose() {
     super.dispose();
     if(_isShowLoading) {
