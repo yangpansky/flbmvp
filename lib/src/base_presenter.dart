@@ -17,6 +17,10 @@ abstract class BasePresenter<V extends IBView, M extends IBModel> implements IBP
   }
 
   @override
+  void didAttachView(V iView) {
+  }
+
+  @override
   @mustCallSuper
   void detachView() {
     _view = null;

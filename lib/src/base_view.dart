@@ -24,6 +24,10 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
     super.initState();
     _presenter = createPresenter();
     _presenter?.attachView(this);
+
+    WidgetsBinding.instance.addPostFrameCallback((Duration _) {
+      _presenter?.didAttachView(this);
+    });
   }
 
   @override
