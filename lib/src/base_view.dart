@@ -6,6 +6,11 @@ abstract class BaseState<P extends IBPresenter<IBView>, V extends StatefulWidget
   P _presenter;
   bool _isShowLoading = false;
 
+  /// 外部间接调用State的setState方法
+  void putState(VoidCallback fn) {
+    setState(fn);
+  }
+
   @override
   @mustCallSuper
   void showLoading() {
